@@ -4,6 +4,7 @@ Docker image based on [thinca/vim:latest-full](https://github.com/thinca/dockerf
 
 ## Usage
 
+https://hub.docker.com/r/uochan/vim/
 ```
 docker pull uochan/vim
 ```
