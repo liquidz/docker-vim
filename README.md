@@ -4,11 +4,11 @@ Docker image based on [thinca/vim:latest-full](https://github.com/thinca/dockerf
 
 ## Usage
 
-https://hub.docker.com/r/uochan/vim/
+See [package registry](https://github.com/liquidz/docker-vim/packages).
 ```
-docker pull uochan/vim
+docker pull docker.pkg.github.com/liquidz/docker-vim/vim:latest
 ```
 
 ## Build
 
-This image is rebuilded every month on the 1st at 05:00 AM(JST).
+This image is rebuilded [every week](https://github.com/liquidz/docker-vim/blob/master/.github/workflows/dockerimage.yml).
