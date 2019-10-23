@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -10,5 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: generate tag
+        run: echo docker.pkg.github.com/${{ github.repository }}/vim:latest > /tmp/tag-for-docker.txt
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag uochan/vim:latest
+        run: docker build . --file Dockerfile --tag $(cat /tmp/tag-for-docker.txt)
+      - name: authenticate
+        run: docker login docker.pkg.github.com -u liquidz -p $GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_TO_PUSH_TO_PACKAGE_REGISTRY }}
+      - name: push
+        run: docker push $(cat /tmp/tag-for-docker.txt)
